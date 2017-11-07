@@ -36,6 +36,9 @@ var clyde = {
   edible: false
 };
 
+//Create an array called ghosts and store each ghost object inside of it.
+var ghosts = [inky, blinky, pinky, clyde]
+
 
 // Draw the screen functionality
 function drawScreen() {
