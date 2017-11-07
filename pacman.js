@@ -68,6 +68,18 @@ function displayMenu() {
   console.log('(q) Quit');
 }
 
+//add a function called eatGhost that accepts a ghost as an argument
+function eatGhost(ghost) {
+  if (ghost["edible"] != true) {
+    //user loses a life
+    lives -= 1
+    console.log("\nYou didn\'t have any powers to eat " + ghost["name"]);
+  } else {
+    //user keeps playing
+    console.log("Congrats! You ate " + ghost["name"]);
+  }
+}
+
 function displayPrompt() {
   // process.stdout.write is similar to console.log except it doesn't add a new line after the text
   process.stdout.write('\nWaka Waka :v '); // :v is the Pac-Man emoji.
@@ -90,6 +102,18 @@ function processInput(key) {
       break;
     case 'd':
       eatDot();
+      break;
+    case '1':
+      eatGhost(inky);
+      break;
+    case '2':
+      eatGhost(blinky);
+      break;
+    case '3':
+      eatGhost(pinky);
+      break;
+    case '4':
+      eatGhost(clyde);
       break;
     default:
       console.log('\nInvalid Command!');
