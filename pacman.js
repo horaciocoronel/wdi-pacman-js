@@ -73,6 +73,10 @@ function eatGhost(ghost) {
   if (ghost["edible"] != true) {
     //user loses a life
     lives -= 1
+    if (lives < 0) {
+      gameOver();
+      console.log("Game Over!");
+    }
     console.log("\nYou didn\'t have any powers to eat " + ghost["name"]);
   } else {
     //user keeps playing
@@ -91,7 +95,6 @@ function eatDot() {
   console.log('\nChomp!');
   score += 10;
 }
-
 
 // Process Player's Input
 function processInput(key) {
@@ -120,6 +123,9 @@ function processInput(key) {
   }
 }
 
+function gameOver() {
+  process.exit();
+}
 
 //
 // YOU PROBABLY DON'T WANT TO CHANGE CODE BELOW THIS LINE
