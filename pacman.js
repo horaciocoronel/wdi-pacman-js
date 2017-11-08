@@ -64,10 +64,26 @@ function displayMenu() {
   console.log('(d) Eat Dot');
   if (powerPellets > 0) {
   console.log('(p) Eat Power-Pellet'); }
-  console.log('(1) Eat Inky');
-  console.log('(2) Eat Blinky');
-  console.log('(3) Eat Pinky');
-  console.log('(4) Eat Clyde');
+  if (ghosts[0]["edible"] === true) {
+  console.log('(1) Eat Inky' + ' edible');
+  } else {
+    console.log('(1) Eat Inky' + ' not edible');
+  }
+  if (ghosts[1]["edible"] === true) {
+  console.log('(2) Eat Blinky' + ' edible');
+  } else {
+    console.log('(2) Eat Blinky' + ' not edible');
+  }
+  if (ghosts[2]["edible"] === true) {
+  console.log('(3) Eat Pinky' + ' edible');
+  } else {
+  console.log('(3) Eat Pinky' + ' not edible')
+  }
+  if (ghosts[3]["edible"] === true) {
+  console.log('(4) Eat Clyde' + ' edible');
+  } else {
+  console.log('(4) Eat Clyde' + ' not edible');
+  }
   console.log('(q) Quit');
 }
 
@@ -76,6 +92,8 @@ function eatGhost(ghost) {
   //user keeps playing
   if (ghost["edible"] === true) {
     console.log("Congrats! You ate " + ghost["name"]);
+    score += 200;
+    ghost["edible"] = false
   } else {
     //user loses a life
     lives -= 1;
@@ -130,8 +148,12 @@ function processInput(key) {
       eatGhost(clyde);
       break;
     case 'p':
+    if (powerPellets > 0) {
       eatPowerPellet();
       break;
+    } else {
+      console.log('\nInvalid Command!');
+    }
     default:
       console.log('\nInvalid Command!');
   }
